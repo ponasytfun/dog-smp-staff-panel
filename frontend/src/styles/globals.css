@@ -1,0 +1,314 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  font-family: "JetBrains Mono", "Cascadia Mono", Consolas, ui-monospace, monospace;
+  background: #080a0f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  background: #080a0f;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    linear-gradient(rgba(100, 255, 114, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(122, 156, 255, 0.035) 1px, transparent 1px),
+    radial-gradient(circle at 18% 8%, rgba(100, 255, 114, 0.08), transparent 28rem),
+    radial-gradient(circle at 82% 14%, rgba(255, 184, 77, 0.07), transparent 30rem),
+    #080a0f;
+  background-size: 22px 22px, 22px 22px, auto, auto, auto;
+  color: #d9e2ef;
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  content: "";
+  background: linear-gradient(180deg, rgba(8, 10, 15, 0.12), rgba(8, 10, 15, 0.78));
+}
+
+button,
+select,
+input {
+  font: inherit;
+}
+
+button:focus-visible,
+select:focus-visible,
+input:focus-visible {
+  outline: 2px solid #64ff72;
+  outline-offset: 2px;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.52;
+}
+
+code {
+  font-family: inherit;
+}
+
+.panel {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 6px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0)),
+    rgba(17, 23, 33, 0.92);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.035),
+    inset 0 -24px 42px rgba(0, 0, 0, 0.28),
+    0 18px 42px rgba(0, 0, 0, 0.24);
+}
+
+.panel::before {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  background:
+    linear-gradient(90deg, rgba(100, 255, 114, 0.08), transparent 36%),
+    linear-gradient(180deg, rgba(122, 156, 255, 0.05), transparent 26%);
+  opacity: 0.8;
+}
+
+.panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.mini-panel {
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.24);
+  padding: 0.85rem;
+}
+
+.identity-card {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  border: 1px solid rgba(100, 255, 114, 0.28);
+  border-radius: 5px;
+  background:
+    linear-gradient(135deg, rgba(100, 255, 114, 0.1), transparent 55%),
+    rgba(0, 0, 0, 0.28);
+  padding: 1rem;
+}
+
+.brand-mark {
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+  place-items: center;
+  border: 1px solid rgba(100, 255, 114, 0.65);
+  border-radius: 5px;
+  background:
+    linear-gradient(135deg, rgba(100, 255, 114, 0.22), rgba(122, 156, 255, 0.08)),
+    #0b1116;
+  color: #64ff72;
+  font-size: 0.95rem;
+  font-weight: 900;
+  box-shadow: 0 0 28px rgba(100, 255, 114, 0.2);
+}
+
+.avatar {
+  display: grid;
+  width: 2.3rem;
+  height: 2.3rem;
+  flex: none;
+  place-items: center;
+  border: 1px solid rgba(122, 156, 255, 0.5);
+  border-radius: 5px;
+  background: rgba(122, 156, 255, 0.12);
+  color: #7a9cff;
+  font-size: 0.75rem;
+  font-weight: 900;
+}
+
+.user-chip {
+  display: flex;
+  min-height: 3rem;
+  align-items: center;
+  gap: 0.75rem;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.28);
+  padding: 0.35rem 0.45rem;
+}
+
+.select-field {
+  min-height: 3rem;
+  border: 1px solid rgba(255, 184, 77, 0.42);
+  border-radius: 5px;
+  background: #0d121a;
+  color: #f8fafc;
+  padding: 0 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.nav-tab,
+.side-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.035);
+  color: #94a3b8;
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.nav-tab {
+  padding: 0.72rem 0.85rem;
+}
+
+.side-tab {
+  width: 100%;
+  padding: 0.75rem;
+}
+
+.nav-tab:hover,
+.side-tab:hover {
+  border-color: rgba(100, 255, 114, 0.45);
+  background: rgba(100, 255, 114, 0.08);
+  color: #d9fbe1;
+}
+
+.nav-tab-active,
+.side-tab-active {
+  border-color: rgba(100, 255, 114, 0.65);
+  background: rgba(100, 255, 114, 0.12);
+  color: #64ff72;
+  box-shadow: inset 0 -2px 0 #64ff72, 0 0 22px rgba(100, 255, 114, 0.14);
+}
+
+.pixel-button {
+  min-height: 2.35rem;
+  border-radius: 4px;
+  clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px));
+}
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 6px;
+  background: rgba(17, 23, 33, 0.72);
+}
+
+.skeleton::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  animation: shimmer 1.25s infinite;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.075),
+    transparent
+  );
+  transform: translateX(-100%);
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.chart-shell {
+  min-width: 0;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: 5px;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    rgba(0, 0, 0, 0.28);
+  background-size: 36px 36px;
+  padding: 1rem;
+}
+
+.chart-shell svg {
+  display: block;
+  width: 100%;
+  height: calc(100% - 2.2rem);
+  min-height: 10rem;
+}
+
+.grid-cols-24 {
+  grid-template-columns: repeat(24, minmax(0, 1fr));
+}
+
+.table-row-grid {
+  display: grid;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.23);
+  padding: 0.9rem;
+}
+
+.env-pill {
+  display: block;
+  overflow-wrap: anywhere;
+  border: 1px solid rgba(122, 156, 255, 0.22);
+  border-radius: 4px;
+  background: rgba(122, 156, 255, 0.08);
+  padding: 0.65rem;
+  color: #b8c7ff;
+  font-size: 0.75rem;
+}
+
+@media (max-width: 900px) {
+  .table-row-grid {
+    grid-template-columns: 1fr !important;
+    align-items: start;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav-tab {
+    flex: 1 1 9rem;
+    justify-content: center;
+  }
+
+  .user-chip {
+    width: 100%;
+  }
+
+  .select-field {
+    width: 100%;
+  }
+
+  .grid-cols-24 {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+}
