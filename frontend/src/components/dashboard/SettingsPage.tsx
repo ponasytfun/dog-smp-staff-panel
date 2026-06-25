@@ -19,8 +19,28 @@ export function SettingsPage({ integrations, currentUser }: SettingsPageProps) {
       <Panel title="Integration Checklist" eyebrow="No secrets stored in frontend">
         <div className="grid gap-3 lg:grid-cols-3">
           <ChecklistItem icon={<LockKeyhole size={18} />} label="Discord OAuth" text="Client ID and redirect URI placeholders only." />
-          <ChecklistItem icon={<Bot size={18} />} label="Bot/Webhooks" text="Webhook env name listed, real URL belongs server-side." />
+          <ChecklistItem icon={<Bot size={18} />} label="Bot/Webhooks" text="Webhook URLs live behind protected serverless routes." />
           <ChecklistItem icon={<ServerCog size={18} />} label="Plugin API" text="Minecraft bridge URL prepared for future backend fetches." />
+        </div>
+      </Panel>
+
+      <Panel title="Webhook Proxy Routes" eyebrow="Server-side only">
+        <div className="grid gap-3 lg:grid-cols-3">
+          <EndpointCard
+            method="POST"
+            path="/api/webhooks/punishments"
+            text="For MC punishments. Requires Authorization: Bearer PANEL_WEBHOOK_API_KEY."
+          />
+          <EndpointCard
+            method="POST"
+            path="/api/webhooks/anticheat"
+            text="For anticheat alerts. Requires Authorization: Bearer PANEL_WEBHOOK_API_KEY."
+          />
+          <EndpointCard
+            method="GET"
+            path="/api/integrations/status"
+            text="Returns configured true/false only. No secrets are returned."
+          />
         </div>
       </Panel>
 
@@ -105,6 +125,26 @@ function ChecklistItem({
       <div className="flex items-center gap-2 text-minecraft">
         {icon}
         <span className="text-xs font-black uppercase">{label}</span>
+      </div>
+      <p className="mt-2 text-sm text-slate-400">{text}</p>
+    </div>
+  );
+}
+
+function EndpointCard({
+  method,
+  path,
+  text,
+}: {
+  method: string;
+  path: string;
+  text: string;
+}) {
+  return (
+    <div className="mini-panel">
+      <div className="flex flex-wrap items-center gap-2">
+        <Badge tone={method === "GET" ? "blue" : "orange"}>{method}</Badge>
+        <code className="text-xs text-slate-200">{path}</code>
       </div>
       <p className="mt-2 text-sm text-slate-400">{text}</p>
     </div>

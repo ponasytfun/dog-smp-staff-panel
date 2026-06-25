@@ -572,8 +572,14 @@ export const integrationStatus: IntegrationStatus[] = [
     key: "discord-bot",
     label: "Discord Bot/Webhooks",
     status: "syncing",
-    envVars: ["DISCORD_BOT_TOKEN", "DISCORD_STATUS_WEBHOOK_URL"],
-    description: "Frontend placeholder for ticket, log, and status webhooks.",
+    envVars: [
+      "DISCORD_BOT_TOKEN",
+      "DISCORD_STATUS_WEBHOOK_URL",
+      "DISCORD_WEBHOOK_MC_PUNISHMENTS",
+      "DISCORD_WEBHOOK_ANTICHEAT",
+      "PANEL_WEBHOOK_API_KEY",
+    ],
+    description: "Server-side proxy placeholders for ticket, log, punishment, and anticheat webhooks.",
   },
   {
     key: "plugin-api",
